@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] private GameObject message, pato;
-    [SerializeField] private GameObject pipes, source;
-    private float intervalo = 1f;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -25,12 +21,6 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            // message.SetActive(true);
-            Destroy(message);
-            pato.SetActive(true);
-            pipes.SetActive(true);
-        }
+        
     }
 }
