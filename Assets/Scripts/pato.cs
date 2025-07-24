@@ -9,6 +9,7 @@ public class pato : MonoBehaviour
     private Rigidbody2D rb;
 
     [SerializeField] private float jumpSpeed;
+    [SerializeField] private GameObject gameover;
 
 
     // Start is called before the first frame update
@@ -38,7 +39,11 @@ public class pato : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision collision){}
+    void OnCollisionEnter2D()
+    {
+        Time.timeScale = 0f;
+        gameover.SetActive(true);
 
+    }
 }
 
