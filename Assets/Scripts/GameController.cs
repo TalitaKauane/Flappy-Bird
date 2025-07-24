@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    [SerializeField] private GameObject message;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +14,11 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (input.GetKeyDown(KeyCode.Space))
+        {
+            Destroy(message);
+
+            duck.SetActive(true);
+        }
     }
 }
