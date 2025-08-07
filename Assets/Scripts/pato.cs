@@ -45,5 +45,14 @@ public class pato : MonoBehaviour
         gameover.SetActive(true);
 
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Score"))
+        {
+            GameController.instance.IncreaseScore(1);
+        }
+    }
+
 }
 
