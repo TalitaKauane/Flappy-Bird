@@ -12,30 +12,34 @@ public class Pipes : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // yVariable = Random.Range(-1, 5) > 0;
-        // if (yVariable)
-        // {
-        //     OscilateY();
-        // }
-
         float randomY = Random.Range(-2f, 2f);
         transform.position = new Vector2(transform.position.x, randomY);
+
+        yVariable = Random.Range(-1, 5) < 0;
+        if (yVariable)
+        {
+            OscilateY();
+        }
+
     }
 
     // Update is called once per frame
 
 
-    // OscilateY()
-    // {
-    //     float newY = transform.position.y + (yVariable ? 0.15f : -0.15f);
-    //     if (newY > 2 || newY < -2)
-    //     {
-    //         yVariable = !yVariable;
-    //         newY = transform.position.y + (yVariable ? 0.15f : -0.15f);
-    //     }
-    //     transform.position = new Vector2(transform.position.x, newY);
-    //     Invoke("OscilateY", 0.1f);
-    // }
+    void OscilateY()
+    {
+        if (GameController.instance.GetScore() < 10) return;
+
+        float variation = 0.8f;
+        float newY = transform.position.y + (yVariable ? variation : -variation);
+        if (newY > 2 || newY < -2)
+        {
+            yVariable = !yVariable;
+            newY = transform.position.y + (yVariable ? variation : -variation);
+        }
+        transform.position = new Vector2(transform.position.x, newY);
+        Invoke("OscilateY", 0.1f);
+    }
 
     void Update()
     {

@@ -10,6 +10,8 @@ public class pato : MonoBehaviour
 
     [SerializeField] private float jumpSpeed;
     [SerializeField] private GameObject gameover;
+    [SerializeField] private AudioClip jumpSound, ponto, porrada;
+
 
 
     // Start is called before the first frame update
@@ -34,6 +36,7 @@ public class pato : MonoBehaviour
     {
         if (jumping)
         {
+            AudioController.instance.PlayAudioClip(jumpSound, false);
             rb.velocity = Vector2.up * jumpSpeed;//(0,1)*jumpSpeed
             jumping = false;
         }
@@ -43,13 +46,16 @@ public class pato : MonoBehaviour
     {
         Time.timeScale = 0f;
         gameover.SetActive(true);
+        AudioController.instance.PlayAudioClip(porrada, false);
 
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Score"))
+        
         {
+            AudioController.instance.PlayAudioClip(ponto, false);
             GameController.instance.IncreaseScore(1);
         }
     }

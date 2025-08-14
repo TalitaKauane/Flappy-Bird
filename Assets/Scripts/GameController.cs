@@ -45,6 +45,11 @@ public class GameController : MonoBehaviour
     }
     // Update is called once per frame
 
+    public int GetScore()
+    {
+        return score;
+    }
+
     public void IncreaseScore(int score)
     {
         this.score += score;
